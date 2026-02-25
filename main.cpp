@@ -79,7 +79,7 @@ T lu_determinant(const Matrix<T>& m) {
 Matrix<double> random_square_matrix(size_t n) {
     std::random_device rd = std::random_device();
     std::mt19937 randint(rd());
-    std::uniform_real_distribution<double> dist(-100, 100);
+    std::uniform_int_distribution<int> dist(-100, 100);
 
     Matrix<double> m(n, n);
     for (size_t i = 0; i < m.rows(); i++) {
@@ -90,8 +90,29 @@ Matrix<double> random_square_matrix(size_t n) {
     return m;
 }
 
-int main() {
-    Matrix<double> m = random_square_matrix(10);
-    std::cout << m << "\n" << naive_determinant(m) << " " << lu_determinant(m);
+int main(int argc, char* argv[]) {
+    Matrix<double> matrix;
+    if (argc > 1) {
+        std::string file_path = std::string(argv[1]);
+        std::ifstream inp(file_path);
+
+        if(!inp.is_open()) return -1;
+
+        size_t n, m = 0;
+        inp >> n >> m;
+        matrix = Matrix<double>(n, m);
+        double temp = 0;
+        for (size_t i = 0; i < matrix.rows(); i++) {
+            for (size_t j = 0; j < matrix.columns(); j++) {
+                inp >> temp;
+                matrix(i, j) = temp;
+            }
+        }
+    }
+    else {
+        matrix = random_square_matrix(10);
+    }
+        
+    std::cout << matrix << "\n" << std::setprecision(std::numeric_limits<double>::max_digits10) << lu_determinant(matrix) << " " << naive_determinant(matrix);
     return 0;
 }
