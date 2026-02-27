@@ -1,6 +1,6 @@
-from ast import arg
 import subprocess
 import numpy as np
+import platform
 
 def numpy_result(matrix_path: str) -> float:
     with open(matrix_path, mode="r") as f:
@@ -13,8 +13,8 @@ def numpy_result(matrix_path: str) -> float:
 
 def cpp_result(executable_path: str, matrix_path: str) -> tuple[float, float]:
     result = subprocess.run(
-        [executable_path, "data.txt"], 
-        capture_output=True, 
+        [executable_path, "data.txt"],
+        capture_output=True,
         text=True,  # Decode output as text
         check=True
     )
@@ -33,7 +33,13 @@ def main(executable_path: str, matrix_path: str) -> None:
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument("-e", "--executable", type=str, help="Путь до исполняемого файла", default="build\Debug\Parallel.exe")
+
+    if platform.system() == 'Windows':
+        default_exec_path = "build\Debug\Parallel.exe"
+    elif platform.system() == 'Linux':
+        default_exec_path = "build\Parallel"
+
+    parser.add_argument("-e", "--executable", type=str, help="Путь до исполняемого файла", default=default_exec_path)
     parser.add_argument("-d", "--data", type=str, help="Путь к файлу с матрицей", default="data.txt")
 
     args = parser.parse_args()

@@ -1,5 +1,4 @@
 #include <iostream>
-#include <omp.h>
 #include "Matrix.h"
 #include <fstream>
 #include <random>
@@ -112,7 +111,32 @@ int main(int argc, char* argv[]) {
     else {
         matrix = random_square_matrix(10);
     }
+    std::cout << matrix << "\n";
+
+    std::cout << "lu_determinant() [size:" << matrix.rows() << "x" << matrix.rows() << "]\n";
+
+    auto start = std::chrono::steady_clock::now();
+    double lu_result = lu_determinant(matrix);
+    auto end = std::chrono::steady_clock::now();
+
+    auto elapsed_ns = duration_cast<std::chrono::nanoseconds>(end - start).count();
+    double elapsed_ms = (double) elapsed_ns / 1000000;
+    std::cout << "result: " << lu_result << "\n";
+    std::cout << "time elapsed: " << elapsed_ms << "ms\n";
+
+    std::cout << "\n";
+
+    std::cout << "naive_determinant() [size:" << matrix.rows() << "x" << matrix.rows() << "]\n";
+
+    start = std::chrono::steady_clock::now();
+    double naive_result = naive_determinant(matrix);
+    end = std::chrono::steady_clock::now();
+
+    elapsed_ns = duration_cast<std::chrono::nanoseconds>(end - start).count();
+    elapsed_ms = (double) elapsed_ns / 1000000;
+    std::cout << "result: " << naive_result << "\n";
+    std::cout << "time elapsed: " << elapsed_ms << "ms\n";
         
-    std::cout << matrix << "\n" << std::setprecision(std::numeric_limits<double>::max_digits10) << lu_determinant(matrix) << " " << naive_determinant(matrix);
+    std::cout << std::setprecision(std::numeric_limits<double>::max_digits10) << lu_result << " " << naive_result;
     return 0;
 }
