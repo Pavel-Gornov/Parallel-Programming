@@ -1,0 +1,18 @@
+lu_determinant() [size:200x200]
+result: -4.23146e-61
+time elapsed: 13.9418ms
+lu_determinant() [size:400x400]
+result: 1.71601e-62
+time elapsed: 108.383ms
+lu_determinant() [size:800x800]
+result: -3.69663e-05
+time elapsed: 872.297ms
+lu_determinant() [size:1200x1200]
+result: -1.59016e+100
+time elapsed: 2905.85ms
+lu_determinant() [size:1600x1600]
+result: -3.79647e+233  
+time elapsed: 7105.09ms
+lu_determinant() [size:2000x2000]
+result: -inf
+time elapsed: 17225.8ms

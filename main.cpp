@@ -78,7 +78,7 @@ T lu_determinant(const Matrix<T>& m) {
 Matrix<double> random_square_matrix(size_t n) {
     std::random_device rd = std::random_device();
     std::mt19937 randint(rd());
-    std::uniform_int_distribution<int> dist(-100, 100);
+    std::uniform_real_distribution<double> dist(-0.1, 0.1); // Чтобы значения определителя не улетали в inf
 
     Matrix<double> m(n, n);
     for (size_t i = 0; i < m.rows(); i++) {
@@ -87,6 +87,32 @@ Matrix<double> random_square_matrix(size_t n) {
         }
     }
     return m;
+}
+
+double benchmark_lu(Matrix<double>& matrix) {
+    std::cout << "lu_determinant() [size:" << matrix.rows() << "x" << matrix.rows() << "]\n";
+    auto start = std::chrono::steady_clock::now();
+    double result = lu_determinant(matrix);
+    auto end = std::chrono::steady_clock::now();
+
+    auto elapsed_ns = duration_cast<std::chrono::nanoseconds>(end - start).count();
+    double elapsed_ms = (double) elapsed_ns / 1000000;
+    std::cout << "result: " << result << "\n";
+    std::cout << "time elapsed: " << elapsed_ms << "ms\n";
+    return result;
+}
+
+double benchmark_naive(Matrix<double>& matrix) {
+    std::cout << "naive_determinant() [size:" << matrix.rows() << "x" << matrix.rows() << "]\n";
+    auto start = std::chrono::steady_clock::now();
+    double result = naive_determinant(matrix);
+    auto end = std::chrono::steady_clock::now();
+
+    auto elapsed_ns = duration_cast<std::chrono::nanoseconds>(end - start).count();
+    double elapsed_ms = (double) elapsed_ns / 1000000;
+    std::cout << "result: " << result << "\n";
+    std::cout << "time elapsed: " << elapsed_ms << "ms\n";
+    return result;
 }
 
 int main(int argc, char* argv[]) {
@@ -109,34 +135,23 @@ int main(int argc, char* argv[]) {
         }
     }
     else {
-        matrix = random_square_matrix(10);
+        matrix = random_square_matrix(9);
     }
+    //#define BENCHMARK true
+    #ifdef BENCHMARK
+        std::vector<int> sizes = {200, 400, 800, 1200, 1600, 2000};
+        for (int el: sizes) {
+            matrix = random_square_matrix(el);
+            benchmark_lu(matrix);
+        }
+    #else
     std::cout << matrix << "\n";
-
-    std::cout << "lu_determinant() [size:" << matrix.rows() << "x" << matrix.rows() << "]\n";
-
-    auto start = std::chrono::steady_clock::now();
-    double lu_result = lu_determinant(matrix);
-    auto end = std::chrono::steady_clock::now();
-
-    auto elapsed_ns = duration_cast<std::chrono::nanoseconds>(end - start).count();
-    double elapsed_ms = (double) elapsed_ns / 1000000;
-    std::cout << "result: " << lu_result << "\n";
-    std::cout << "time elapsed: " << elapsed_ms << "ms\n";
+    double lu_result = benchmark_lu(matrix);
 
     std::cout << "\n";
+    double naive_result = benchmark_naive(matrix);
 
-    std::cout << "naive_determinant() [size:" << matrix.rows() << "x" << matrix.rows() << "]\n";
-
-    start = std::chrono::steady_clock::now();
-    double naive_result = naive_determinant(matrix);
-    end = std::chrono::steady_clock::now();
-
-    elapsed_ns = duration_cast<std::chrono::nanoseconds>(end - start).count();
-    elapsed_ms = (double) elapsed_ns / 1000000;
-    std::cout << "result: " << naive_result << "\n";
-    std::cout << "time elapsed: " << elapsed_ms << "ms\n";
-        
     std::cout << std::setprecision(std::numeric_limits<double>::max_digits10) << lu_result << " " << naive_result;
+    #endif
     return 0;
 }
