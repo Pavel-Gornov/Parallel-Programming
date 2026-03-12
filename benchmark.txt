@@ -1,0 +1,193 @@
+threads: 1
+lu_determinant() [size:200x200]
+result: 1.0008806595873893e-62
+time elapsed: 18.296600000000002ms
+[test]: Значения подсчитаны верно!
+
+threads: 1
+lu_determinant() [size:400x400]
+result: -2.3962302119231951e-62
+time elapsed: 134.1086ms
+[test]: Значения подсчитаны верно!
+
+threads: 1
+lu_determinant() [size:800x800]
+result: -0.0026397457871293129 
+time elapsed: 1018.8418ms      
+[test]: Значения подсчитаны верно!
+
+threads: 1
+lu_determinant() [size:1200x1200] 
+result: -6.1525400947911694e+99   
+time elapsed: 3359.8899000000001ms
+[test]: Значения подсчитаны верно!
+
+threads: 1
+lu_determinant() [size:1600x1600]
+result: -2.4604508101817724e+232 
+time elapsed: 8049.2864ms
+[test]: Значения подсчитаны верно!
+
+\Python311\site-packages\numpy\linalg\_linalg.py:2431: RuntimeWarning: overflow encountered in det
+  r = _umath_linalg.det(a, signature=signature)
+threads: 1
+lu_determinant() [size:2000x2000]
+result: -inf
+time elapsed: 20118.346300000001ms
+[test]: Значения подсчитаны верно!
+
+
+threads: 2
+lu_determinant() [size:200x200]
+result: 8.1770281074474993e-62
+time elapsed: 30.267099999999999ms
+[test]: Значения подсчитаны верно!
+
+threads: 2
+lu_determinant() [size:400x400]
+result: -2.4893051389049758e-63
+time elapsed: 150.8193ms
+[test]: Значения подсчитаны верно!
+
+threads: 2
+lu_determinant() [size:800x800]
+result: 9.6283292020044118e-06
+time elapsed: 855.38610000000006ms
+[test]: Значения подсчитаны верно!
+
+threads: 2
+lu_determinant() [size:1200x1200]
+result: -5.5631952400838412e+99
+time elapsed: 2606.4780999999998ms
+[test]: Значения подсчитаны верно!
+
+threads: 2
+lu_determinant() [size:1600x1600]
+result: 3.3548412886199766e+234
+time elapsed: 5403.4093000000003ms
+[test]: Значения подсчитаны верно!
+
+\Python311\site-packages\numpy\linalg\_linalg.py:2431: RuntimeWarning: overflow encountered in det
+  r = _umath_linalg.det(a, signature=signature)
+threads: 2
+lu_determinant() [size:2000x2000]
+result: inf
+time elapsed: 10501.0728ms
+[test]: Значения подсчитаны верно!
+
+
+threads: 4
+lu_determinant() [size:200x200]
+result: -2.7350086054575162e-63
+time elapsed: 35.865099999999998ms
+[test]: Значения подсчитаны верно!
+
+threads: 4
+lu_determinant() [size:400x400]
+result: 1.3713590976844635e-63
+time elapsed: 169.17519999999999ms
+[test]: Значения подсчитаны верно!
+
+threads: 4
+lu_determinant() [size:800x800]   
+result: -9.1653647965979021e-06   
+time elapsed: 798.93089999999995ms
+[test]: Значения подсчитаны верно!
+
+threads: 4
+lu_determinant() [size:1200x1200] 
+result: -2.8722089880486523e+99   
+time elapsed: 2141.9097999999999ms
+[test]: Значения подсчитаны верно!
+
+threads: 4
+lu_determinant() [size:1600x1600]
+result: 1.9256066112889139e+233
+time elapsed: 4292.5051000000003ms
+[test]: Значения подсчитаны верно!
+
+\Python311\site-packages\numpy\linalg\_linalg.py:2431: RuntimeWarning: overflow encountered in det
+  r = _umath_linalg.det(a, signature=signature)
+threads: 4
+lu_determinant() [size:2000x2000]
+result: -inf
+time elapsed: 7540.8404ms
+[test]: Значения подсчитаны верно!
+
+
+threads: 8
+lu_determinant() [size:200x200]   
+result: -5.7887605960593064e-62   
+time elapsed: 48.109999999999999ms
+[test]: Значения подсчитаны верно!
+
+threads: 8
+lu_determinant() [size:400x400]
+result: 1.860909653077986e-63
+time elapsed: 190.7834ms
+[test]: Значения подсчитаны верно!
+
+threads: 8
+lu_determinant() [size:800x800]
+result: -0.0008279537573676047
+time elapsed: 850.02930000000003ms
+[test]: Значения подсчитаны верно!
+
+threads: 8
+lu_determinant() [size:1200x1200]
+result: 6.6590348828628184e+100
+time elapsed: 2082.7312000000002ms
+[test]: Значения подсчитаны верно!
+
+threads: 8
+lu_determinant() [size:1600x1600]
+result: -2.1054732433324893e+233
+time elapsed: 4158.9409999999998ms
+[test]: Значения подсчитаны верно!
+
+\Python311\site-packages\numpy\linalg\_linalg.py:2431: RuntimeWarning: overflow encountered in det
+  r = _umath_linalg.det(a, signature=signature)
+threads: 8
+lu_determinant() [size:2000x2000]
+result: -inf
+time elapsed: 7046.6552000000001ms
+[test]: Значения подсчитаны верно!
+
+
+threads: 16
+lu_determinant() [size:200x200]
+result: 1.6803100603567942e-61
+time elapsed: 88.772900000000007ms
+[test]: Значения подсчитаны верно!
+
+threads: 16
+lu_determinant() [size:400x400]
+result: 1.960227126695373e-62
+time elapsed: 543.75409999999999ms
+[test]: Значения подсчитаны верно!
+
+threads: 16
+lu_determinant() [size:800x800]
+result: 5.1050073761408955e-05
+time elapsed: 1216.4233999999999ms
+[test]: Значения подсчитаны верно!
+
+threads: 16
+lu_determinant() [size:1200x1200]
+result: 4.3879586145502747e+100
+time elapsed: 3167.7718ms
+[test]: Значения подсчитаны верно!
+
+threads: 16
+lu_determinant() [size:1600x1600]
+result: -3.6144895903573899e+234
+time elapsed: 5144.4543999999996ms
+[test]: Значения подсчитаны верно!
+
+\Python311\site-packages\numpy\linalg\_linalg.py:2431: RuntimeWarning: overflow encountered in det
+  r = _umath_linalg.det(a, signature=signature)
+threads: 16
+lu_determinant() [size:2000x2000]
+result: -inf
+time elapsed: 9088.6995000000006ms
+[test]: Значения подсчитаны верно!

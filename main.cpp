@@ -127,7 +127,7 @@ double benchmark_naive(const Matrix<double>& matrix) {
 }
 
 int main() {
-    //omp_set_num_threads();
+    omp_set_num_threads(16);
     size_t n, m = 0;
     std::cin >> n >> m;
 
@@ -139,6 +139,7 @@ int main() {
     }
 
     // std::cout << matrix << matrix.rows() << matrix.columns() << "\n";
+    std::cout << "threads: " << omp_get_max_threads() << "\n";
     std::cout << std::setprecision(std::numeric_limits<double>::max_digits10);
     benchmark_lu(matrix);
     //benchmark_naive(matrix);

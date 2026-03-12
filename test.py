@@ -4,7 +4,8 @@ import platform
 import random
 import io
 
-def cpp_result(executable_path: str, matrix: list[list[float]]) -> tuple[float, float]:
+def cpp_result(executable_path: str, matrix: list[list[float]]) -> float:
+    """Запускает написанную программу, и считывает вывод, возвращает результат вычисления"""
     n = len(matrix)
     input_string = io.StringIO()
     input_string.write(f"{n} {n}\n")
@@ -19,7 +20,7 @@ def cpp_result(executable_path: str, matrix: list[list[float]]) -> tuple[float, 
         check=True
     )
     output = result.stdout
-    print(output)
+    print(output, end="")
     result = output.split("\n")[-3].split(": ")[-1]
     if result == "-nan(ind)":
         return float('nan')
@@ -34,9 +35,10 @@ def main(executable_path: str) -> None:
         det_program = cpp_result(executable_path, matrix)
 
         if np.isclose(det_np, det_program):
-            print("Значения подсчитаны верно!")
+            print("[test]: Значения подсчитаны верно!")
         else:
-            print(f"Результаты не совпадают: f{det_np, det_program}")
+            print(f"[test]: Результаты не совпадают: f{det_np, det_program}")
+        print()
 
 
 if __name__ == "__main__":
