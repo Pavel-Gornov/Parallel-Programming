@@ -4,7 +4,7 @@ import platform
 import random
 import io
 
-def cpp_result(executable_path: str, mpi_workers: int, matrix: list[list[float]]) -> float:
+def cpp_result(executable_path: str, mpi_workers: int, matrix: list[list[float]]):
     """Запускает написанную программу, и считывает вывод, возвращает результат вычисления"""
     n = len(matrix)
     input_string = io.StringIO()
@@ -22,27 +22,30 @@ def cpp_result(executable_path: str, mpi_workers: int, matrix: list[list[float]]
         check=True
     )
 
-    output = result.stdout
-    print(output, end="")
-    result = output.split("\n")[-3].split(": ")[-1]
-    if result == "-nan(ind)":
-        return float('nan')
-    return float(result)
+    output = result.stdout.split("result:")
+    print(output[0], end="")
+    o = output[1].split("\n")
+    m = []
+    for i in o:
+        l = list(map(float, i.split()))
+        if l:
+            m.append(l)
+
+    return m
 
 def main(executable_path: str) -> None:
     for threads in (1, 2, 4, 8, 16):
         for n in (200, 400, 800, 1200, 1600, 2000):
+            #matrix = [[random.randint(0, 10) for _ in range(n)] for _ in range(n)]
             matrix = [[random.uniform(-0.1, 0.1) for _ in range(n)] for _ in range(n)]
-            # print(*matrix, sep="\n")
-
-            det_np = np.linalg.det(matrix)
-            det_program = cpp_result(executable_path, threads, matrix)
-
-            if np.isclose(det_np, det_program):
+            res_np = np.matmul(matrix, matrix)
+            
+            res = cpp_result(executable_path, threads, matrix)
+            #print(res, res_np)
+            if (np.allclose(res_np, res)):
                 print("[test]: Значения подсчитаны верно!")
             else:
-                print(f"[test]: Результаты не совпадают: f{det_np, det_program}")
-            print()
+                print(f"[test]: Результаты не совпадают: f{res_np, res}")
 
 
 if __name__ == "__main__":

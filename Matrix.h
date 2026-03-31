@@ -13,7 +13,7 @@ public:
         this->allocate_();
         for (size_t i = 0; i < rows_; i++) {
             for (size_t j = 0; j < rows_; j++) {
-                data_[i][j] = arr[(i * n) + j];
+                data_[i*rows_ + j] = arr[(i * n) + j];
             }
         }
     }
@@ -49,13 +49,13 @@ public:
         if (n >= rows_ || m >= columns_) {
             throw std::range_error("Выход за границы матрицы!");
         }
-        return this->data_[n][m];
+        return this->data_[n * rows_ + m];
     }
     T operator()(size_t n, size_t m) const {
         if (n >= rows_ || m >= columns_) {
             throw std::range_error("Выход за границы матрицы!");
         }
-        return this->data_[n][m];
+        return this->data_[n * rows_ + m];
     }
 
     bool operator==(const Matrix<T>& other) const {
@@ -64,7 +64,7 @@ public:
         }
         for (size_t i = 0; i < rows_; i++) {
             for (size_t j = 0; j < rows_; j++) {
-                if (data_[i][j] != other.data_[i][j]) {
+                if (data_[i*rows_ + j] != other.data_[i*rows_ + j]) {
                     return false;
                 }
             }
@@ -78,7 +78,7 @@ public:
         }
         for (size_t i = 0; i < rows_; i++) {
             for (size_t j = 0; j < columns_; j++) {
-                data_[i][j] += other.data_[i][j];
+                data_[i*rows_ + j] += other.data_[i*rows_ + j];
             }
         }
         return *this;
@@ -90,7 +90,7 @@ public:
         }
         for (size_t i = 0; i < rows_; i++) {
             for (size_t j = 0; j < columns_; j++) {
-                data_[i][j] -= other.data_[i][j];
+                data_[i*rows_ + j] -= other.data_[i*rows_ + j];
             }
         }
         return *this;
@@ -105,7 +105,7 @@ public:
         for (size_t i = 0; i < rows_; i++) {
             for (size_t j = 0; j < other.columns_; j++) {
                 for (size_t r = 0; r < columns_; r++) {
-                    res.data_[i][j] += data_[i][r] * other.data_[r][j];
+                    res.data_[i*rows_ + j] += data_[i*rows_ + j] * other.data_[r*rows_ + j];
                 }
             }
         }
@@ -116,7 +116,7 @@ public:
     Matrix<T>& operator*=(T scalar) {
         for (size_t i = 0; i < rows_; i++) {
             for (size_t j = 0; j < columns_; j++) {
-                data_[i][j] *= scalar;
+                data_[i*rows_ + j] *= scalar;
             }
         }
         return *this;
@@ -128,7 +128,7 @@ public:
         }
         for (size_t i = 0; i < rows_; i++) {
             for (size_t j = 0; j < columns_; j++) {
-                data_[i][j] /= scalar;
+                data_[i*rows_ + j] /= scalar;
             }
         }
         return *this;
@@ -138,9 +138,9 @@ public:
         T temp = T();
         for (size_t i = 0; i < rows_; i++) {
             for (size_t j = i; j < columns_; j++) {
-                temp = data_[i][j];
-                data_[i][j] = data_[j][i];
-                data_[j][i] = temp;
+                temp = data_[i*rows_ + j];
+                data_[i*rows_ + j] = data_[i*rows_ + j];
+                data_[i*rows_ + j] = temp;
             }
         }
     }
@@ -151,31 +151,27 @@ public:
         return m;
     }
 
+    /* Похожий функционал, как у std::vector */
+    T* data() {
+        return data_;
+    }
+
 private:
     void allocate_() {
-        this->data_ = new T*[rows_];
-        for (size_t i = 0; i < rows_; i++) {
-            this->data_[i] = new T[columns_];
-            for (size_t j = 0; j < columns_; j++) {
-                this->data_[i][j] = T();
-            }
-        }
+        this->data_ = new T[rows_ * columns_];
     }
     void destroy_() {
-        for (size_t i = 0; i < rows_; i++) {
-            delete[] data_[i];
-        }
         delete[] data_;
     }
     void copy_data_(const Matrix& m) {
         for (size_t i = 0; i < m.rows_; i++) {
             for (size_t j = 0; j < m.columns_; j++) {
-                this->data_[i][j] = m.data_[i][j];
+                this->data_[i*rows_ + j] = m.data_[i*rows_ + j];
             }
         }
     }
 
-    T** data_ = nullptr;
+    T* data_ = nullptr;
     size_t rows_;
     size_t columns_;
 };
