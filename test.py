@@ -23,7 +23,10 @@ def cpp_result(executable_path: str, mpi_workers: int, matrix: list[list[float]]
     )
 
     output = result.stdout.split("result:")
-    print(output[0], end="")
+    print(output[0], end="") # Результирующая матрица не выводится
+    time = output[0].split("time elapsed: ")[-1]
+    time = float(time.strip("ms\n"))
+
     o = output[1].split("\n")
     m = []
     for i in o:
@@ -31,21 +34,25 @@ def cpp_result(executable_path: str, mpi_workers: int, matrix: list[list[float]]
         if l:
             m.append(l)
 
-    return m
+    return m, time
 
 def main(executable_path: str) -> None:
     for threads in (1, 2, 4, 8, 16):
+        times = []
         for n in (200, 400, 800, 1200, 1600, 2000):
             #matrix = [[random.randint(0, 10) for _ in range(n)] for _ in range(n)]
             matrix = [[random.uniform(-0.1, 0.1) for _ in range(n)] for _ in range(n)]
             res_np = np.matmul(matrix, matrix)
             
-            res = cpp_result(executable_path, threads, matrix)
+            res, time = cpp_result(executable_path, threads, matrix)
+            times.append((n, time))
             #print(res, res_np)
             if (np.allclose(res_np, res)):
                 print("[test]: Значения подсчитаны верно!")
             else:
-                print(f"[test]: Результаты не совпадают: f{res_np, res}")
+                print(f"[test]: Результаты не совпадают: ")
+            print()
+        print(times)
 
 
 if __name__ == "__main__":

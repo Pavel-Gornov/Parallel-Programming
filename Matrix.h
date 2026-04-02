@@ -105,7 +105,7 @@ public:
         for (size_t i = 0; i < rows_; i++) {
             for (size_t j = 0; j < other.columns_; j++) {
                 for (size_t r = 0; r < columns_; r++) {
-                    res.data_[i*rows_ + j] += data_[i*rows_ + j] * other.data_[r*rows_ + j];
+                    res.data_[i*rows_ + j] += data_[i*rows_ + r] * other.data_[r*rows_ + j];
                 }
             }
         }
@@ -158,7 +158,7 @@ public:
 
 private:
     void allocate_() {
-        this->data_ = new T[rows_ * columns_];
+        this->data_ = new T[rows_ * columns_]{};
     }
     void destroy_() {
         delete[] data_;

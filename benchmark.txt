@@ -1,0 +1,154 @@
+threads: 1
+parallel_multiply() [size:200x200]
+time elapsed: 58.247599999999998ms
+[test]: Значения подсчитаны верно!
+
+threads: 1
+parallel_multiply() [size:400x400]
+time elapsed: 467.07170000000002ms
+[test]: Значения подсчитаны верно!
+
+threads: 1
+parallel_multiply() [size:800x800]
+time elapsed: 3735.1543999999999ms
+[test]: Значения подсчитаны верно!
+
+threads: 1
+parallel_multiply() [size:1200x1200]
+time elapsed: 12675.9197ms
+[test]: Значения подсчитаны верно!
+
+threads: 1
+parallel_multiply() [size:1600x1600]
+time elapsed: 31577.5995ms
+[test]: Значения подсчитаны верно!
+
+parallel_multiply() [size:2000x2000]
+time elapsed: 60328.576099999998ms
+[test]: Значения подсчитаны верно!
+
+[(200, 58.2476), (400, 467.0717), (800, 3735.1544), (1200, 12675.9197), (1600, 31577.5995), (2000, 60328.5761)]                                                       7.5995), 
+threads: 2
+parallel_multiply() [size:200x200]
+time elapsed: 30.187999999999999ms
+[test]: Значения подсчитаны верно!
+
+threads: 2
+parallel_multiply() [size:400x400]
+time elapsed: 234.446ms
+[test]: Значения подсчитаны верно!
+
+threads: 2
+parallel_multiply() [size:800x800]
+time elapsed: 1888.4675999999999ms
+[test]: Значения подсчитаны верно!
+
+threads: 2
+parallel_multiply() [size:1200x1200]
+time elapsed: 6348.9132ms
+[test]: Значения подсчитаны верно!
+
+threads: 2
+parallel_multiply() [size:1600x1600]
+time elapsed: 15774.8351ms
+[test]: Значения подсчитаны верно!
+
+threads: 2
+parallel_multiply() [size:2000x2000]
+time elapsed: 29362.087100000001ms
+[test]: Значения подсчитаны верно!
+
+[(200, 30.188), (400, 234.446), (800, 1888.4676), (1200, 6348.9132), (1600, 15774.8351), (2000, 29362.0871)]
+threads: 4
+parallel_multiply() [size:200x200]
+time elapsed: 15.462199999999999ms
+[test]: Значения подсчитаны верно!
+
+threads: 4
+parallel_multiply() [size:400x400]
+time elapsed: 124.4345ms
+[test]: Значения подсчитаны верно!
+
+threads: 4
+parallel_multiply() [size:800x800]
+time elapsed: 1015.403ms
+[test]: Значения подсчитаны верно!
+
+threads: 4
+parallel_multiply() [size:1200x1200]
+time elapsed: 3441.4901ms
+[test]: Значения подсчитаны верно!
+
+threads: 4
+parallel_multiply() [size:1600x1600]
+time elapsed: 8219.5923999999995ms
+[test]: Значения подсчитаны верно!
+
+threads: 4
+parallel_multiply() [size:2000x2000]
+time elapsed: 16080.176100000001ms
+[test]: Значения подсчитаны верно!
+
+[(200, 15.4622), (400, 124.4345), (800, 1015.403), (1200, 3441.4901), (1600, 8219.5924), (2000, 16080.1761)]
+threads: 8
+parallel_multiply() [size:200x200]
+time elapsed: 12.625299999999999ms
+[test]: Значения подсчитаны верно!
+
+threads: 8
+parallel_multiply() [size:400x400]
+time elapsed: 90.993499999999997ms
+[test]: Значения подсчитаны верно!
+
+threads: 8
+parallel_multiply() [size:800x800]
+time elapsed: 662.97739999999999ms
+[test]: Значения подсчитаны верно!
+
+threads: 8
+parallel_multiply() [size:1200x1200]
+time elapsed: 2187.4490999999998ms
+[test]: Значения подсчитаны верно!
+
+threads: 8
+parallel_multiply() [size:1600x1600]
+time elapsed: 5028.4121999999998ms
+[test]: Значения подсчитаны верно!
+
+threads: 8
+parallel_multiply() [size:2000x2000]
+time elapsed: 9645.7368999999999ms
+[test]: Значения подсчитаны верно!
+
+[(200, 12.6253), (400, 90.9935), (800, 662.9774), (1200, 2187.4491), (1600, 5028.4122), (2000, 9645.7369)]
+threads: 16
+parallel_multiply() [size:200x200]
+time elapsed: 10.178800000000001ms
+[test]: Значения подсчитаны верно!
+
+threads: 16
+parallel_multiply() [size:400x400]
+time elapsed: 63.451300000000003ms
+[test]: Значения подсчитаны верно!
+
+threads: 16
+parallel_multiply() [size:800x800]
+time elapsed: 498.99869999999999ms
+[test]: Значения подсчитаны верно!
+
+threads: 16
+parallel_multiply() [size:1200x1200]
+time elapsed: 1686.5632000000001ms
+[test]: Значения подсчитаны верно!
+
+threads: 16
+parallel_multiply() [size:1600x1600]
+time elapsed: 3910.8667999999998ms
+[test]: Значения подсчитаны верно!
+
+threads: 16
+parallel_multiply() [size:2000x2000]
+time elapsed: 7753.7874000000002ms
+[test]: Значения подсчитаны верно!
+
+[(200, 10.1788), (400, 63.4513), (800, 498.9987), (1200, 1686.5632), (1600, 3910.8668), (2000, 7753.7874)]
