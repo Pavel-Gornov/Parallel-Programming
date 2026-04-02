@@ -7,7 +7,7 @@
 
 **Лабораторная работа №2 (OpenMP):** [lab2](https://github.com/Pavel-Gornov/Parallel-Programming/tree/lab2)
 
-**Лабораторная работа №3 (MPI):** `В РАЗРАБОТКЕ!`
+**Лабораторная работа №3 (MPI):** [lab3](https://github.com/Pavel-Gornov/Parallel-Programming/tree/lab3)
 
 **Лабораторная работа №4 (CUDA):** `В РАЗРАБОТКЕ!`
 
