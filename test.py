@@ -62,7 +62,7 @@ if __name__ == "__main__":
     if platform.system() == 'Windows':
         default_exec_path = "build\Debug\Parallel.exe"
     elif platform.system() == 'Linux':
-        default_exec_path = "build\Parallel"
+        default_exec_path = "./build/Parallel"
 
     parser.add_argument("-e", "--executable", type=str, help="Путь до исполняемого файла", default=default_exec_path)
 

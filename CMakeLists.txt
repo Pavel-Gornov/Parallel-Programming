@@ -4,7 +4,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(EXECUTABLE ${PROJECT_NAME})
-
+add_definitions(-DOMPI_SKIP_MPICXX) #openmpi
 find_package(MPI REQUIRED)
 
 add_executable(${EXECUTABLE} main.cpp)

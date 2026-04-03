@@ -94,7 +94,7 @@ int main(int argc, char** argv){
     auto end = std::chrono::steady_clock::now();
 
     if (rank == 0) {
-        auto elapsed_ns = duration_cast<std::chrono::nanoseconds>(end - start).count();
+        auto elapsed_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
         double elapsed_ms = (double) elapsed_ns / 1000000;
         std::cout << "time elapsed: " << elapsed_ms << "ms\n";
         std::cout << "result: " << result << "\n";
