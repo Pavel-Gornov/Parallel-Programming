@@ -1,24 +1,8 @@
-cmake_minimum_required(VERSION 3.12)
-project("Parallel" CXX)
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+cmake_minimum_required(VERSION 3.18)
+project("Parallel" LANGUAGES CXX CUDA)
 
 set(EXECUTABLE ${PROJECT_NAME})
 
-find_package(OpenMP REQUIRED)
-
-add_executable(${EXECUTABLE} main.cpp)
-
-target_link_libraries(${EXECUTABLE} PRIVATE OpenMP::OpenMP_CXX) 
-
-# Настройки компиляторов для лабораторных работ \/
-if(CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang" OR
-   CMAKE_CXX_COMPILER_ID STREQUAL "Clang" OR
-   CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-  target_compile_options(${EXECUTABLE} PRIVATE "-Wall" "-Weffc++" "-Wextra" "-Wpedantic")
-elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-  if(CMAKE_CXX_FLAGS MATCHES "/W[0-4]")
-    string(REGEX REPLACE "/W[0-4]" "" CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS})
-  endif()
-  target_compile_options(${EXECUTABLE} PRIVATE "/W4" "/utf-8")
-endif()
+set(CMAKE_CUDA_ARCHITECTURES native)
+set(CMAKE_CUDA_RUNTIME_LIBRARY Static)
+add_executable(${EXECUTABLE} main.cu)
