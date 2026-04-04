@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cstdio>
-//#include <cuda/cmath>
 #include "Matrix.h"
 #include <chrono>
 
@@ -56,7 +55,6 @@ Matrix<double> gpu_multiply(Matrix<double> A, Matrix<double> B) {
             blocksPerGrid.x = ceil(double(N)/double(threadsPerBlock.x));
             blocksPerGrid.y = ceil(double(N)/double(threadsPerBlock.y));
     }
-    std::cout << "rows: " << C.rows() << " columns: " << C.columns() << " A_columns: " << A.columns() << "\n";
     kernel_gpu_multiply<<<threadsPerBlock, blocksPerGrid>>>(Ag, Bg, Cg, C.rows(), C.columns(), A.columns());
     cudaDeviceSynchronize();
 
@@ -75,7 +73,6 @@ int main() {
         system("chcp 65001 > nul");
     #endif
     //std::cout << std::setprecision(std::numeric_limits<double>::max_digits10);
-    std::cout << "Hello World from the CPU!\n";
 
     size_t n, m;
     std::cin >> n;
@@ -88,20 +85,10 @@ int main() {
         }
     }
 
-    std::cin >> n;
-    std::cin >> m;
-
-    Matrix<double> matrix2 = Matrix<double>(n, m);
-    for (size_t i = 0; i < n; i++) {
-        for (size_t j = 0; j < m; j++) {
-            std::cin >> matrix2(i, j);
-        }
-    }
-
     std::cout << "gpu_multiply() [size:" << matrix.rows() << "x" << matrix.rows() << "]\n";
 
     auto start = std::chrono::steady_clock::now();
-    Matrix<double> result = gpu_multiply(matrix, matrix2);
+    Matrix<double> result = gpu_multiply(matrix, matrix);
     auto end = std::chrono::steady_clock::now();
 
     auto elapsed_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();

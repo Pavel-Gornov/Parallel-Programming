@@ -1,0 +1,25 @@
+gpu_multiply() [size:200x200]
+time elapsed: 121.314ms      
+[test]: Значения подсчитаны верно!
+
+gpu_multiply() [size:400x400]
+time elapsed: 114.839ms      
+[test]: Значения подсчитаны верно!
+
+gpu_multiply() [size:800x800]
+time elapsed: 159.647ms
+[test]: Значения подсчитаны верно!
+
+gpu_multiply() [size:1200x1200]
+time elapsed: 198.614ms
+[test]: Значения подсчитаны верно!
+
+gpu_multiply() [size:1600x1600]
+time elapsed: 238.817ms
+[test]: Значения подсчитаны верно!
+
+gpu_multiply() [size:2000x2000]
+time elapsed: 348.36ms
+[test]: Значения подсчитаны верно!
+
+[(200, 121.314), (400, 114.839), (800, 159.647), (1200, 198.614), (1600, 238.817), (2000, 348.36)]
