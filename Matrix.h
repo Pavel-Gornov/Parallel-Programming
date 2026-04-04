@@ -12,8 +12,8 @@ public:
     Matrix(size_t n, size_t m, const std::vector<T>& arr): rows_(n), columns_(m) {
         this->allocate_();
         for (size_t i = 0; i < rows_; i++) {
-            for (size_t j = 0; j < rows_; j++) {
-                data_[i*rows_ + j] = arr[(i * n) + j];
+            for (size_t j = 0; j < columns_; j++) {
+                data_[i*columns_ + j] = arr[i * columns_ + j];
             }
         }
     }
@@ -49,13 +49,13 @@ public:
         if (n >= rows_ || m >= columns_) {
             throw std::range_error("Выход за границы матрицы!");
         }
-        return this->data_[n * rows_ + m];
+        return this->data_[n * columns_ + m];
     }
     T operator()(size_t n, size_t m) const {
         if (n >= rows_ || m >= columns_) {
             throw std::range_error("Выход за границы матрицы!");
         }
-        return this->data_[n * rows_ + m];
+        return this->data_[n * columns_ + m];
     }
 
     bool operator==(const Matrix<T>& other) const {
@@ -63,8 +63,8 @@ public:
             return false; 
         }
         for (size_t i = 0; i < rows_; i++) {
-            for (size_t j = 0; j < rows_; j++) {
-                if (data_[i*rows_ + j] != other.data_[i*rows_ + j]) {
+            for (size_t j = 0; j < columns_; j++) {
+                if (data_[i*columns_ + j] != other.data_[i*columns_ + j]) {
                     return false;
                 }
             }
@@ -78,7 +78,7 @@ public:
         }
         for (size_t i = 0; i < rows_; i++) {
             for (size_t j = 0; j < columns_; j++) {
-                data_[i*rows_ + j] += other.data_[i*rows_ + j];
+                data_[i*columns_ + j] += other.data_[i*columns_ + j];
             }
         }
         return *this;
@@ -90,7 +90,7 @@ public:
         }
         for (size_t i = 0; i < rows_; i++) {
             for (size_t j = 0; j < columns_; j++) {
-                data_[i*rows_ + j] -= other.data_[i*rows_ + j];
+                data_[i*columns_ + j] -= other.data_[i*columns_ + j];
             }
         }
         return *this;
@@ -105,7 +105,7 @@ public:
         for (size_t i = 0; i < rows_; i++) {
             for (size_t j = 0; j < other.columns_; j++) {
                 for (size_t r = 0; r < columns_; r++) {
-                    res.data_[i*rows_ + j] += data_[i*rows_ + r] * other.data_[r*rows_ + j];
+                    res.data_[i*other.columns_ + j] += data_[i*columns_ + r] * other.data_[r*other.columns_ + j];
                 }
             }
         }
@@ -116,7 +116,7 @@ public:
     Matrix<T>& operator*=(T scalar) {
         for (size_t i = 0; i < rows_; i++) {
             for (size_t j = 0; j < columns_; j++) {
-                data_[i*rows_ + j] *= scalar;
+                data_[i*columns_ + j] *= scalar;
             }
         }
         return *this;
@@ -128,27 +128,34 @@ public:
         }
         for (size_t i = 0; i < rows_; i++) {
             for (size_t j = 0; j < columns_; j++) {
-                data_[i*rows_ + j] /= scalar;
+                data_[i*columns_ + j] /= scalar;
             }
         }
         return *this;
     }
 
     void transpose() {
-        T temp = T();
+        Matrix<T> res(columns_, rows_);
+
         for (size_t i = 0; i < rows_; i++) {
-            for (size_t j = i; j < columns_; j++) {
-                temp = data_[i*rows_ + j];
-                data_[i*rows_ + j] = data_[i*rows_ + j];
-                data_[i*rows_ + j] = temp;
+            for (size_t j = 0; j < columns_; j++) {
+                res(j, i) = data_[i*columns_ + j];
+                std::cout << data_[i*columns_ + j] << "\n";
             }
         }
+        *this = res;
     }
 
     Matrix<T> get_transposed() const {
-        Matrix<T> m(*this);
-        m.transpose();
-        return m;
+        Matrix<T> res(columns_, rows_);
+
+        for (size_t i = 0; i < rows_; i++) {
+            for (size_t j = 0; j < columns_; j++) {
+                res(j, i) = data_[i*columns_ + j];
+                std::cout << data_[i*columns_ + j] << "\n";
+            }
+        }
+        return res;
     }
 
     /* Похожий функционал, как у std::vector */
@@ -166,7 +173,7 @@ private:
     void copy_data_(const Matrix& m) {
         for (size_t i = 0; i < m.rows_; i++) {
             for (size_t j = 0; j < m.columns_; j++) {
-                this->data_[i*rows_ + j] = m.data_[i*rows_ + j];
+                this->data_[i*columns_ + j] = m.data_[i*columns_ + j];
             }
         }
     }
