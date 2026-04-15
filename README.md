@@ -11,4 +11,4 @@
 
 **Лабораторная работа №4 (CUDA):** [lab4](https://github.com/Pavel-Gornov/Parallel-Programming/tree/lab4)
 
-**Лабораторная работа №5 (Суперкомпьютер):** `В РАЗРАБОТКЕ!`
+**Лабораторная работа №5 (Суперкомпьютер):** [lab5](https://github.com/Pavel-Gornov/Parallel-Programming/tree/lab5)
