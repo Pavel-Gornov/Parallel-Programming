@@ -1,0 +1,155 @@
+threads: 1
+parallel_multiply() [size:200x200]
+time elapsed: 11.016ms
+[test]: Значения подсчитаны верно!
+
+threads: 1
+parallel_multiply() [size:400x400]
+time elapsed: 127.904ms
+[test]: Значения подсчитаны верно!
+
+threads: 1
+parallel_multiply() [size:800x800]
+time elapsed: 1125.93ms
+[test]: Значения подсчитаны верно!
+
+threads: 1
+parallel_multiply() [size:1200x1200]
+time elapsed: 3317ms
+[test]: Значения подсчитаны верно!
+
+threads: 1
+parallel_multiply() [size:1600x1600]
+time elapsed: 11383.1ms
+[test]: Значения подсчитаны верно!
+
+threads: 1
+parallel_multiply() [size:2000x2000]
+time elapsed: 20816.1ms
+[test]: Значения подсчитаны верно!
+
+[(200, 11.016), (400, 127.904), (800, 1125.93), (1200, 3317.0), (1600, 11383.1), (2000, 20816.1)]
+threads: 2
+parallel_multiply() [size:200x200]
+time elapsed: 5.40384ms
+[test]: Значения подсчитаны верно!
+
+threads: 2
+parallel_multiply() [size:400x400]
+time elapsed: 47.7491ms
+[test]: Значения подсчитаны верно!
+
+threads: 2
+parallel_multiply() [size:800x800]
+time elapsed: 466.308ms
+[test]: Значения подсчитаны верно!
+
+threads: 2
+parallel_multiply() [size:1200x1200]
+time elapsed: 1516.51ms
+[test]: Значения подсчитаны верно!
+
+threads: 2
+parallel_multiply() [size:1600x1600]
+time elapsed: 4474.65ms
+[test]: Значения подсчитаны верно!
+
+threads: 2
+parallel_multiply() [size:2000x2000]
+time elapsed: 9723.53ms
+[test]: Значения подсчитаны верно!
+
+[(200, 5.40384), (400, 47.7491), (800, 466.308), (1200, 1516.51), (1600, 4474.65), (2000, 9723.53)]
+threads: 4
+parallel_multiply() [size:200x200]
+time elapsed: 3.17177ms
+[test]: Значения подсчитаны верно!
+
+threads: 4
+parallel_multiply() [size:400x400]
+time elapsed: 25.0233ms
+[test]: Значения подсчитаны верно!
+
+threads: 4
+parallel_multiply() [size:800x800]
+time elapsed: 260.688ms
+[test]: Значения подсчитаны верно!
+
+threads: 4
+parallel_multiply() [size:1200x1200]
+time elapsed: 835.348ms
+[test]: Значения подсчитаны верно!
+
+threads: 4
+parallel_multiply() [size:1600x1600]
+time elapsed: 1636.33ms
+[test]: Значения подсчитаны верно!
+
+threads: 4
+parallel_multiply() [size:2000x2000]
+time elapsed: 4712.68ms
+[test]: Значения подсчитаны верно!
+
+[(200, 3.17177), (400, 25.0233), (800, 260.688), (1200, 835.348), (1600, 1636.33), (2000, 4712.68)]
+threads: 8
+parallel_multiply() [size:200x200]
+time elapsed: 2.18439ms
+[test]: Значения подсчитаны верно!
+
+threads: 8
+parallel_multiply() [size:400x400]
+time elapsed: 13.5419ms
+[test]: Значения подсчитаны верно!
+
+threads: 8
+parallel_multiply() [size:800x800]
+time elapsed: 103.209ms
+[test]: Значения подсчитаны верно!
+
+threads: 8
+parallel_multiply() [size:1200x1200]
+time elapsed: 333.173ms
+[test]: Значения подсчитаны верно!
+
+threads: 8
+parallel_multiply() [size:1600x1600]
+time elapsed: 1017.22ms
+[test]: Значения подсчитаны верно!
+
+threads: 8
+parallel_multiply() [size:2000x2000]
+time elapsed: 2283.65ms
+[test]: Значения подсчитаны верно!
+
+[(200, 2.18439), (400, 13.5419), (800, 103.209), (1200, 333.173), (1600, 1017.22), (2000, 2283.65)]
+threads: 16
+parallel_multiply() [size:200x200]
+time elapsed: 5.48047ms
+[test]: Значения подсчитаны верно!
+
+threads: 16
+parallel_multiply() [size:400x400]
+time elapsed: 21.7461ms
+[test]: Значения подсчитаны верно!
+
+threads: 16
+parallel_multiply() [size:800x800]
+time elapsed: 109.821ms
+[test]: Значения подсчитаны верно!
+
+threads: 16
+parallel_multiply() [size:1200x1200]
+time elapsed: 336.327ms
+[test]: Значения подсчитаны верно!
+
+threads: 16
+parallel_multiply() [size:1600x1600]
+time elapsed: 976.246ms
+[test]: Значения подсчитаны верно!
+
+threads: 16
+parallel_multiply() [size:2000x2000]
+time elapsed: 1652.87ms
+[test]: Значения подсчитаны верно!
+
+[(200, 5.48047), (400, 21.7461), (800, 109.821), (1200, 336.327), (1600, 976.246), (2000, 1652.87)]
