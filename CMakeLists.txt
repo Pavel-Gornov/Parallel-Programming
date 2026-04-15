@@ -1,15 +1,15 @@
 cmake_minimum_required(VERSION 3.12)
-project("Parallel" CXX)
+project("Parallel" CXX C)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(EXECUTABLE ${PROJECT_NAME})
-
-find_package(OpenMP REQUIRED)
+add_definitions(-DOMPI_SKIP_MPICXX) #openmpi
+find_package(MPI REQUIRED)
 
 add_executable(${EXECUTABLE} main.cpp)
 
-target_link_libraries(${EXECUTABLE} PRIVATE OpenMP::OpenMP_CXX) 
+target_link_libraries(${EXECUTABLE} PUBLIC MPI::MPI_C)
 
 # Настройки компиляторов для лабораторных работ \/
 if(CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang" OR
